@@ -11,11 +11,11 @@ In particular we:
 4. Report evaluation for each cell type annotation method in a way that permits a fair comparisons across methods.
 
 This effort attempts to formulate a **decentralized** approach to **continuous** benchmarking.
- - Individualcomputational groups are only responsible for tuning and submitting results for their own methods.
+ - Individual computational groups are only responsible for tuning and submitting results for their own methods.
  - New methods can be added at any time, but results can be compared in a fair manner to previously submitted methods.
  - All reporting (data + model cards) is intended to be succinct yet accessible to a non-expert.
 
-We hope that this format can prevent misrepresentation of methods, have archival value through a minimal but necessary level of reproducibility, and provide the basis for informed decision making regarding choice of cell type annotation methods for specific tasks.
+We hope that this benchmarking format can provide the basis for informed decision making regarding choice of cell type annotation methods for specific tasks.
 
 ----
 
@@ -28,18 +28,21 @@ We hope that this format can prevent misrepresentation of methods, have archival
 
 ----
 
-### Environment
-```bash
-conda create -n bmark
-conda activate bmark
-conda install python==3.8
-conda install seaborn scikit-learn statsmodels numba pytables
-conda install -c conda-forge python-igraph leidenalg
-pip install scanpy
-pip install gdown timebudget autopep8 toml sklearn
-pip install jupyterlab
-pip install -e .
+### Benchmark format and expectations
+
+The BICAN benchmark files extend the [Allen Inistute Taxonomy schema](https://github.com/AllenInstitute/AllenInstituteTaxonomy) by including a benchmark key in the `uns` of each anndata file which specifies train and validation splits. We have prespecificed a 10-fold cross-validation splits to compare mapping methods on the various benchmark tasks. Users can access the k-fold indices as follows:
+
 ```
+benchamrk_anndata.uns.benchmark.k_fold["fold_1"].train_ind
+benchamrk_anndata.uns.benchmark.k_fold["fold_1"].val_ind
+```
+
+It is expected that the mapping method train only on samples in `train_ind` then validate on samples specified in `val_ind`. Mapping method results should conform to the follow standard:
+
+| cell_id | [Annotation_level]_[MAPPING_METHOD_NAME]_label | [Annotation_level]_[MAPPING_METHOD_NAME]_score
+| -- | -- | -- | 
+| adata.obs.index[`val_ind`] | Annotation name from taxonomy | Numeric indicating confidence of label assignment ranging from 0-1 |
+
 ----
 ### Contributors
 TBD
