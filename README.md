@@ -23,7 +23,7 @@ We hope that this benchmarking format can provide the basis for informed decisio
  
 | Priority | Data set | Characteristics | Status | Download
 | -- | -- | -- |  -- | --|
-| 1.1 | HMBA Basal Ganglia (Macaque) | Donor effects, multi-species | Ready | [S3 Link](s3://released-taxonomies-802451596237-us-west-2/HMBA/BasalGanglia/benchmarks/HMBA_Macaque_BG_082024_AIT_benchmark.h5ad)
+| 1.1 | HMBA Basal Ganglia (Macaque) | Donor effects, multi-species | Ready | [S3 Link](https://released-taxonomies-802451596237-us-west-2.s3.us-west-2.amazonaws.com/HMBA/BasalGanglia/benchmarks/HMBA_Macaque_BG_082024_AIT_benchmark.h5ad)
 | 1.2 | HMBA Basal Ganglia (Human) | Donor effects | Ready | [S3 Link]
 | 1.3 | Siletti el al. Human Brain | Donor effects | Ready | [S3 Link]
 
